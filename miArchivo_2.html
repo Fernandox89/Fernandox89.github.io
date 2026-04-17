@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clase antes de vacaciones</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body style="color:bisque;">
+  
+  <div id ="encabezado"> 
+    <h2>Encabezado</h2>
+  </div>
+
+  <div id="contenedor">
+    <div class="elemento"> Sección 1</div>
+    <div class="elemento"> Sección 2</div>
+    <div class="elemento"> Sección 3</div>    
+  </div> 
+
+  <div id="cuerpo">
+
+  </div>
+
+  <button type="button" id="uno">Click</button>
+  <button type="button 2" id="dos">Click</button>
+
+<style >
+    
+   
+</style>
+
+<script >
+  let t=1986; //variable que puede cambiar por let
+  console.log(t) //imprimir variable 
+
+  const c=12; //varible que no cambia por const
+
+  let p={"titulo":"Llano en llamas","autor":"Juan Rulfo"} //objeto con propiedades, 2 propiedades cada uno con un valor (título y autor)
+  console.log(p.autor) //imprimir juan rulfo en consola
+
+  //funcion
+  function tripicar(a){
+    return 3*a
+  }
+  
+  let d=document.createElement("p"); //crea una etiqueta parrafo
+  d.textContent="hola";
+
+  document.getElementById("encabezado").appendChild(d).setAttribute("style","color:blue;"); //a encabezado se le pega d
+  
+  //trer los datos del archivo json 
+  async function obtenerJSON(){
+    const respuesta=await fetch('archivo.json'); //-> usar await hace que se trabaje lo demás como en segundo plano en lo que se ejecuta esta tarea
+    const datos=await respuesta.json();
+    return datos;
+  }
+
+  async function mostrarDatos() {
+    let datos= await obtenerJSON(); //guardar en datos los elementos de json
+
+    let f=document.createElement("p");
+    f.textContent=datos.autor;
+
+    document.getElementById("cuerpo").appendChild(f).setAttribute("style","color:red;");
+  }
+  mostrarDatos();
+
+  //funcion para imprimir romeo y julieta
+  async function webJSON(){
+    const respuesta= await fetch("http://openlibrary.org/subjects/love.json?published_in=1500-1600");
+    const data=await respuesta.json();
+
+    let r=document.createElement("p"); //r es la etiqueta de parrafo
+    r.textContent=data.works[0].title; //contenido de r es data, del array works, [0] es el primer elemento y necesito el title
+
+    document.getElementById("cuerpo").appendChild(r).setAttribute("style","color:red;"); //pegar a la estructura
+  }
+  webJSON();
+
+  //funcion para imprimir otro titulo del json, se hace con un boton
+  async function webJSON2(){
+    const respuesta= await fetch("http://openlibrary.org/subjects/love.json?published_in=1500-1600");
+    const data=await respuesta.json();
+
+    let r=document.createElement("p"); //r es la etiqueta de parrafo
+    r.textContent=data.works[1].title; //contenido de r es data, del array works, [0] es el primer elemento y necesito el title
+
+    document.getElementById("cuerpo").appendChild(r).setAttribute("style","color:red;"); //pegar a la estructura
+  }
+
+let d2=document.getElementById("uno");
+d2.addEventListener("click",webJSON2)
+
+async function Artista() {
+    let r=document.createElement("img"); //r es la etiqueta de parrafo
+    const respuesta= await fetch("https://www.theaudiodb.com/api/v1/json/123/search.php?s=bad+bunny");
+    const data=await respuesta.json();
+    
+    r.src=data.artists[0].strArtistThumb; //contenido de r es data, del array works, [0] es el primer elemento y necesito el title
+    document.getElementById("cuerpo").appendChild(r);
+}
+
+let d3=document.getElementById("dos");
+d3.addEventListener("click",Artista)
+
+async function Artista2() {
+    let r=document.createElement("img"); //r es la etiqueta de parrafo
+    const respuesta= await fetch("https://www.theaudiodb.com/api/v1/json/123/search.php?s=bad+bunny");
+    const data=await respuesta.json();
+    
+    r.src=data.artists[0].strArtistFanart; //contenido de r es data, del array works, [0] es el primer elemento y necesito el title
+    document.getElementById("cuerpo").appendChild(r);
+}
+
+let d4=document.getElementById("dos");
+d4.addEventListener("click",Artista2)
+</script>
+
+
+
+</body>
+
+</html>
+

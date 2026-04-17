@@ -1,0 +1,18 @@
+body{
+    background-color:rgb(191, 137, 241);
+    color:aquamarine;
+}
+
+div.contenedor{
+   border: 10px white solid;     
+   background-color: rgb(125, 125, 235);
+}
+
+#contenedor{
+    border: 10px rgb(238, 238, 152) solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}

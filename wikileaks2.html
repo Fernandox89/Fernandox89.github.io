@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiLeaks Clone</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: black;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .header h2 {
+            margin: 0;
+        }
+
+        .main {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 60%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .featured, .resources {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .leak-item, .resource-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .leak-item:last-child,
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .date {
+            font-size: 12px;
+            color: gray;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Leaks News About Partners Donate Submit</h2>
+</div>
+
+<div class="main">
+
+    <form>
+        <input type="text" placeholder="Search for leaks...">
+        <button type="submit">Search</button>
+    </form>
+
+    <section class="featured">
+        <h1>Featured</h1>
+
+        <article class="leak-item">
+            <h3>The Intolerance Network</h3>
+            <p>Today, 5th August 2021...</p>
+            <span class="date">05 August 2021</span>
+        </article>
+
+        <article class="leak-item">
+            <h3>Fishrot</h3>
+            <p>Today, November 12...</p>
+            <span class="date">12 November 2019</span>
+        </article>
+
+    </section>
+
+    <section class="resources">
+        <h2>Resources</h2>
+
+        <article class="resource-item">
+            <h3>Tor</h3>
+            <p>Encrypted anonymising network...</p>
+        </article>
+
+    </section>
+
+</div>
+
+</body>
+</html>

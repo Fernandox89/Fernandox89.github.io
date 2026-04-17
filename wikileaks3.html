@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WikiLeaks Clone Advanced</title>
+
+<style>
+    body {
+        font-family: Arial;
+        margin: 0;
+        background: #f4f4f4;
+    }
+
+    .header {
+        background: black;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .main {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+    }
+
+    input {
+        padding: 10px;
+        width: 60%;
+    }
+
+    button {
+        padding: 10px;
+        background: black;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .leak-item {
+        background: white;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Leaks News About Partners Donate Submit</h2>
+</div>
+
+<div class="main">
+
+    <input type="text" id="searchInput" placeholder="Search leaks...">
+    <button onclick="searchLeaks()">Search</button>
+
+    <div id="leaksContainer">
+
+        <div class="leak-item">
+            <h3>The Intolerance Network</h3>
+            <p>Right wing organisations...</p>
+        </div>
+
+        <div class="leak-item">
+            <h3>Fishrot</h3>
+            <p>Documents from SAMHERJI...</p>
+        </div>
+
+        <div class="leak-item">
+            <h3>Amazon Atlas</h3>
+            <p>Confidential Amazon document...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function searchLeaks() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.getElementsByClassName("leak-item");
+
+    for (let i = 0; i < items.length; i++) {
+        let text = items[i].innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            items[i].classList.remove("hidden");
+        } else {
+            items[i].classList.add("hidden");
+        }
+    }
+}
+</script>
+
+</body>
+</html>
