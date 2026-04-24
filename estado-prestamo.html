@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estado del Préstamo</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f0f4f8; padding: 2rem; }
+    h1 { color: #333; }
+    button {
+      background-color: #2196F3;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover { background-color: #1976D2; }
+    #resultado { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .tarjeta {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .tarjeta h2 { margin: 0 0 0.5rem 0; color: #222; }
+    .tarjeta p { margin: 0.3rem 0; color: #555; }
+    .barra-contenedor {
+      background-color: #e0e0e0;
+      border-radius: 8px;
+      height: 12px;
+      margin-top: 0.5rem;
+    }
+    .barra-progreso {
+      background-color: #4CAF50;
+      height: 12px;
+      border-radius: 8px;
+    }
+    .status-activo { color: blue; font-weight: bold; }
+    .status-pagado { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Estado del Préstamo</h1>
+  <p>Consulta el estado actual de los préstamos.</p>
+  <button onclick="verEstado()">Ver estado</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    async function verEstado() {
+      const res = await fetch('/api/estado-prestamo');
+      const datos = await res.json();
+
+      const contenedor = document.getElementById('resultado');
+      contenedor.innerHTML = '';
+
+      datos.forEach(prestamo => {
+        const progreso = Math.round((prestamo.semanas_pagadas / prestamo.plazo) * 100);
+
+        const tarjeta = document.createElement('div');
+        tarjeta.classList.add('tarjeta');
+
+        tarjeta.innerHTML = `
+          <h2>👤 ${prestamo.usuario}</h2>
+          <p>🔖 ID: ${prestamo.loan_id}</p>
+          <p>💰 Monto: $${prestamo.monto}</p>
+          <p>✅ Semanas pagadas: ${prestamo.semanas_pagadas}</p>
+          <p>⏳ Semanas restantes: ${prestamo.semanas_restantes}</p>
+          <p>Estado: <span class="status-${prestamo.status}">${prestamo.status}</span></p>
+          <p>Progreso: ${progreso}%</p>
+          <div class="barra-contenedor">
+            <div class="barra-progreso" style="width: ${progreso}%"></div>
+          </div>
+        `;
+
+        contenedor.appendChild(tarjeta);
+      });
+    }
+  </script>
+</body>
+</html>

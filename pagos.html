@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagos</title>
+</head>
+<body>
+  <h1>Mis Pagos</h1>
+  <button onclick="verPagos()">Ver pagos</button>
+
+  <table border="1" cellpadding="8" id="tablaPagos">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function verPagos() {
+      const res = await fetch('/api/pagos');
+      const pagos = await res.json();
+
+      const tbody = document.querySelector('#tablaPagos tbody');
+      tbody.innerHTML = '';
+
+      pagos.forEach(pago => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td>${pago.id}</td>
+          <td>${pago.usuario}</td>
+          <td>$${pago.monto}</td>
+          <td>${pago.fecha}</td>
+          <td>${pago.status}</td>
+        `;
+        tbody.appendChild(fila);
+      });
+    }
+  </script>
+</body>
+</html>
