@@ -252,7 +252,7 @@ const servidor = http.createServer((req, res) => {
   } else if (url === '/credito') {
       mostrarLimiteCredito(req, res);
   } else if (url === '/api/pagos') {
-      getPagos(req, res);
+      getPagos(req, res);x
   } else if (url === '/pagos') {
       mostrarPagos(req, res);
   }
