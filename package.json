@@ -1,19 +1,24 @@
 {
-  "name": "fernandox89.github.io-main",
+  "name": "miservidor",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "module",
-  "main": "archivo.js",
+  "main": "miservidor.js",
   "scripts": {
-    "porfa": "node miservidor.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fernandox89/misservidor.git"
+  },
   "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Fernandox89/misservidor/issues"
+  },
+  "homepage": "https://github.com/Fernandox89/misservidor#readme",
   "dependencies": {
-    "axios": "^1.15.0",
-    "dayjs": "^1.11.20",
-    "http": "^0.0.1-security"
+    "express": "^5.2.1"
   }
 }
